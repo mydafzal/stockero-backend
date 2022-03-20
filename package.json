@@ -5,7 +5,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "format": "prettier --write .",
-    "deploy": "git add ./ && git commit -m \":rocket: Deploy\" && git push heroku main"
+    "deploy": "git add ./ && git commit -m \":rocket: Deploy\" && git push heroku main && git push"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
