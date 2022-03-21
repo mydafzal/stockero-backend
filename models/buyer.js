@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Buyer.init({
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    email: { type: DataTypes.STRING, unique: true },
+    Email: DataTypes.STRING,
     Password: DataTypes.STRING
   }, {
     sequelize,

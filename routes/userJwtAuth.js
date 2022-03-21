@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
 	try {
 		const user = await models.buyer.findAll({
 			where: {
-				email: email,
+				Email: email,
 			},
 		})
 		if (user.length > 0) {
@@ -25,8 +25,8 @@ router.post('/register', async (req, res) => {
 		let addUser = await models.buyer.create({
 			firstName: firstName,
 			lastName: lastName,
-			email: email,
-			password: bcryptPassword,
+			Email: email,
+			Password: bcryptPassword,
 		})
 
 		const userJWTToken = jwtGenerator(addUser.id)
