@@ -3,7 +3,7 @@ const authorize = require('../middleware/userAuthorize')
 
 router.post('/', authorize, async (req, res) => {
 	try {
-		const customer = await models.User.findAll({
+		const customer = await models.buyer.findAll({
 			where: {
 				id: req.body.id,
 			},
