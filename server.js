@@ -19,6 +19,7 @@ const userCredential = require('./routes/userCredential')
 /* Routes */
 
 app.use('/user/authentication', require('./routes/userJwtAuth'))
+app.use('/buyer/authentication', require('./routes/userJwtAuth'))
 app.use('/user/credential', userCredential)
 
 const PORT = process.env.PORT || 5000
