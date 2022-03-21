@@ -44,7 +44,7 @@ router.post('/login', validInfo, async (req, res) => {
 	try {
 		const user = await models.buyer.findAll({
 			where: {
-				email: email,
+				Email: email,
 			},
 		})
 		if (user.length === 0) {
