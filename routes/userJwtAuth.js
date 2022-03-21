@@ -10,7 +10,7 @@ router.post('/register', async (req, res) => {
 	const { email, firstName, lastName, password } = req.body
 
 	try {
-		const user = await models.Buyer.findAll({
+		const user = await models.buyer.findAll({
 			where: {
 				email: email,
 			},
@@ -22,7 +22,7 @@ router.post('/register', async (req, res) => {
 		const salt = await bcrypt.genSalt(9)
 		const bcryptPassword = await bcrypt.hash(password, salt)
 
-		let addUser = await models.Buyer.create({
+		let addUser = await models.buyer.create({
 			firstName: firstName,
 			lastName: lastName,
 			email: email,
@@ -42,7 +42,7 @@ router.post('/login', validInfo, async (req, res) => {
 	const { email, password } = req.body
 
 	try {
-		const user = await models.Buyer.findAll({
+		const user = await models.buyer.findAll({
 			where: {
 				email: email,
 			},
