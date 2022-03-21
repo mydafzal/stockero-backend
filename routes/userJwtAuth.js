@@ -7,10 +7,10 @@ const jwtGenerator = require('../utils/jwtGenerator')
 const authorize = require('../middleware/userAuthorize')
 
 router.post('/register', async (req, res) => {
-	const { email, name, password } = req.body
+	const { email, firstName, lastName, password } = req.body
 
 	try {
-		const user = await models.User.findAll({
+		const user = await models.Buyer.findAll({
 			where: {
 				email: email,
 			},
@@ -18,12 +18,13 @@ router.post('/register', async (req, res) => {
 		if (user.length > 0) {
 			return res.status(401).json({ data: 'User already exist!' })
 		}
-
+		
 		const salt = await bcrypt.genSalt(9)
 		const bcryptPassword = await bcrypt.hash(password, salt)
 
-		let addUser = await models.User.create({
-			name: name,
+		let addUser = await models.Buyer.create({
+			firstName: firstName,
+			lastName: lastName,
 			email: email,
 			password: bcryptPassword,
 		})
@@ -41,7 +42,7 @@ router.post('/login', validInfo, async (req, res) => {
 	const { email, password } = req.body
 
 	try {
-		const user = await models.User.findAll({
+		const user = await models.Buyer.findAll({
 			where: {
 				email: email,
 			},
