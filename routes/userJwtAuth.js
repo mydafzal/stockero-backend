@@ -7,7 +7,7 @@ const jwtGenerator = require('../utils/jwtGenerator')
 const authorize = require('../middleware/userAuthorize')
 
 router.post('/register', async (req, res) => {
-	const { email, name, password } = req.body
+	const { email, password } = req.body
 
 	try {
 		const user = await models.User.findAll({
@@ -23,7 +23,6 @@ router.post('/register', async (req, res) => {
 		const bcryptPassword = await bcrypt.hash(password, salt)
 
 		let addUser = await models.User.create({
-			name: name,
 			email: email,
 			password: bcryptPassword,
 		})
