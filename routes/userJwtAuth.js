@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt')
 const validInfo = require('../middleware/validInfo')
 const jwtGenerator = require('../utils/jwtGenerator')
 const authorize = require('../middleware/userAuthorize')
+const buyer = require('../models/buyer')
 
 router.post('/register', async (req, res) => {
 	const { email, firstName, lastName, password } = req.body
@@ -56,8 +57,8 @@ router.post('/login', validInfo, async (req, res) => {
 		if (!validPassword) {
 			return res.status(401).json('Invalid Credential')
 		}
-		const userJWTToken = jwtGenerator(user[0].id)
-		return res.status(200).json({ token: userJWTToken, success: true, data: user })
+		const userJWTToken = jwtGenerator(buyer[0].id)
+		return res.status(200).json({ token: userJWTToken, success: true, data: buyer })
 	} catch (err) {
 		console.error(err)
 		res.status(500).json({ source: 'Error in user login', message: err.message })
