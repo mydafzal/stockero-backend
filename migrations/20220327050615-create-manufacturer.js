@@ -23,6 +23,9 @@ module.exports = {
 			city: {
 				type: Sequelize.STRING,
 			},
+			CNIC: {
+				type: Sequelize.STRING,
+			},
 			factory_id: {
 				type: Sequelize.INTEGER,
 			},
