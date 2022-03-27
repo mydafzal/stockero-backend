@@ -22,7 +22,12 @@ const manufacturerRoute = require('./routes/manufacturer/manufactuterRoute.js')
 app.use('/user/authentication', require('./routes/userJwtAuth'))
 app.use('/buyer/authentication', require('./routes/userJwtAuth'))
 app.use('/user/credential', userCredential)
+<<<<<<< HEAD
+app.use('/test',require('./routes/test/test.js'))
+app.use('/product',require('./routes/product/product.js'))
+=======
 app.use('/manufacturer', manufacturerRoute)
+>>>>>>> 708c9765060810f42ab7af2016140b410a2745cf
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
