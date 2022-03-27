@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/17.4.0/bin/node /usr/local/bin/yarn push
+  /usr/local/Cellar/node/17.4.0/bin/node /usr/local/bin/yarn install
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/momalafzal/Library/Android/sdk/emulator:/Users/momalafzal/Library/Android/sdk/tools:/Users/momalafzal/Library/Android/sdk/tools/bin:/Users/momalafzal/Library/Android/sdk/platform-tools:/Users/momalafzal/Downloads/flutter/bin:/Users/momalafzal/Library/Android/sdk/emulator:/Users/momalafzal/Library/Android/sdk/tools:/Users/momalafzal/Library/Android/sdk/tools/bin:/Users/momalafzal/Library/Android/sdk/platform-tools:/Users/momalafzal/Downloads/flutter/bin
