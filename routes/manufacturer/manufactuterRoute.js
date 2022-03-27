@@ -1,7 +1,12 @@
 const express = require('express')
+var fs = require('fs')
+var { parse } = require('csv-parse')
+const getStream = require('get-stream')
 const router = express.Router()
 const models = require('../../models')
 const authorize = require('../../middleware/userAuthorize')
+const jwtGenerator = require('../../utils/jwtGenerator')
+const bcrypt = require('bcrypt')
 
 router.post('/register', async (req, res) => {
 	const { email, name, password, address, city, ntn } = req.body
@@ -67,6 +72,28 @@ router.post('/approve/by/:id', authorize, async (req, res) => {
 	} catch (err) {
 		console.error(err.message)
 		res.status(500).json({ source: 'Error in approval', message: err.message })
+	}
+})
+
+router.get('/verify/by/ntn/:id', authorize, async (req, res) => {
+	try {
+		const id = req.params.id
+
+		readCSVData = async (filePath) => {
+			const parseStream = parse({ delimiter: ',' })
+			const data = await getStream.array(fs.createReadStream(filePath).pipe(parseStream))
+			return data.map((line) => {
+				if (line[1] == id) {
+					return res.status(200).json({ approved: true })
+				}
+			})
+		}
+
+		const data = await readCSVData(`${__dirname}/ATL.csv`)
+
+	} catch (err) {
+		console.error(err.message)
+		res.status(500).json({ source: 'Error in verifying details', message: err.message })
 	}
 })
 
