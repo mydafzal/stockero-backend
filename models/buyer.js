@@ -13,6 +13,15 @@ module.exports = (sequelize, DataTypes) => {
 	}
 	Buyer.init(
 		{
+<<<<<<< HEAD
+=======
+			id: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+				autoIncrement: true,
+				primaryKey: true,
+			},
+>>>>>>> 708c9765060810f42ab7af2016140b410a2745cf
 			firstName: DataTypes.STRING,
 			lastName: DataTypes.STRING,
 			Email: DataTypes.STRING,
