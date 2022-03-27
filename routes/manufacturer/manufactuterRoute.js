@@ -57,15 +57,18 @@ router.get('/list', authorize, async (req, res) => {
 	}
 })
 
-router.post('/approve/by/:id', authorize, async (req, res) => {
+router.post('/update/status/by/:id', authorize, async (req, res) => {
 	try {
 		const id = req.params.id
+		const { status } = req.body
 		const data = await models.Manufacturer.update(
 			{
-				isApproved: true,
+				isApproved: status,
 			},
 			{
-				id: id,
+				where: {
+					id: id,
+				},
 			}
 		)
 		return res.status(200).json({ data: data })
@@ -78,19 +81,20 @@ router.post('/approve/by/:id', authorize, async (req, res) => {
 router.get('/verify/by/ntn/:id', authorize, async (req, res) => {
 	try {
 		const id = req.params.id
+		console.log(id)
 
 		readCSVData = async (filePath) => {
 			const parseStream = parse({ delimiter: ',' })
 			const data = await getStream.array(fs.createReadStream(filePath).pipe(parseStream))
 			return data.map((line) => {
 				if (line[1] == id) {
+					console.log(true)
 					return res.status(200).json({ approved: true })
 				}
 			})
 		}
 
 		const data = await readCSVData(`${__dirname}/ATL.csv`)
-
 	} catch (err) {
 		console.error(err.message)
 		res.status(500).json({ source: 'Error in verifying details', message: err.message })
