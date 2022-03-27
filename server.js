@@ -16,11 +16,13 @@ app.use((req, res, next) => {
 
 /* Import Route Files */
 const userCredential = require('./routes/userCredential')
+const manufacturerRoute = require('./routes/manufacturer/manufactuterRoute.js')
 /* Routes */
 
 app.use('/user/authentication', require('./routes/userJwtAuth'))
 app.use('/buyer/authentication', require('./routes/userJwtAuth'))
 app.use('/user/credential', userCredential)
+app.use('/manufacturer', manufacturerRoute)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
