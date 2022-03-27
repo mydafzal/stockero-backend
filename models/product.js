@@ -14,17 +14,10 @@ module.exports = (sequelize, DataTypes) => {
 	Product.init(
 		{
 			id: {
-<<<<<<< HEAD
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: DataTypes.INTEGER,
-=======
-				type: DataTypes.INTEGER,
-				allowNull: false,
-				autoIncrement: true,
-				primaryKey: true,
->>>>>>> 708c9765060810f42ab7af2016140b410a2745cf
 			},
 			Name: DataTypes.STRING,
 			Category: DataTypes.STRING,
