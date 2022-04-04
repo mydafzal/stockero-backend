@@ -25,6 +25,7 @@ app.use('/buyer/authentication', require('./routes/userJwtAuth'))
 app.use('/user/credential', userCredential)
 app.use('/manufacturer', manufacturerRoute)
 app.use('/sales', salesRoute)
+app.use("/buyer",require("./routes/buyer/buyer.route"))
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
